@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <stdint.h>
 
 #define POOL_SIZE 2048
 
@@ -9,11 +10,11 @@ struct block{
     block *next;  
 };
 
-#define dptr_t unsigned char* 
+
 
 typedef struct {
     block *head; //point to the avaiabile block
-    unsigned char pool[POOL_SIZE];//pool size is also the alignament for the block
+    uint8_t pool[POOL_SIZE];//pool size is also the alignament for the block
 }Pool;
 
 
@@ -23,7 +24,7 @@ void create_pool(Pool *p){
     p->head = (block *)p->pool; //set head inside pool
     block *c = p->head;  //set the current block    
     for (size_t i = 0; i < (POOL_SIZE /sizeof(*c)) - 1 ; i++){
-        c->next = (block *)((dptr_t)c + sizeof(block));
+        c->next = (block *)((uint8_t *)c + sizeof(block));
         c = c->next;
     }
     c->next = NULL;
