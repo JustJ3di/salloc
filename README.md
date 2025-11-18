@@ -6,7 +6,7 @@ It allows allocation and release of fixed-size memory blocks from a pre-allocate
 
 The allocator is suitable for embedded systems, real-time applications, or performance-critical code where predictable allocation is required.
 
-''' 
+'''c 
 typedef struct {
     block *head;               // Points to the first available block
     unsigned char pool[POOL_SIZE];  // Raw memory pool
