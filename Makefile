@@ -1,13 +1,13 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -O2
 
-OBJ = main.o 
+OBJ = example.o 
 
 program: $(OBJ)
 	$(CC) $(CFLAGS) -o program $(OBJ)
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
+example.o: example.c
+	$(CC) $(CFLAGS) -c example.c
 
 
 clean:
